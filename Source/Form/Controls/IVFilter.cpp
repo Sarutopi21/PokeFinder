@@ -46,6 +46,18 @@ IVFilter::IVFilter(QWidget *parent) : QWidget(parent), ui(new Ui::IVFilter)
     ui->labelSpe->installEventFilter(this);
 
     connect(ui->checkBoxShowStats, &QCheckBox::stateChanged, this, [=](int state) { emit showStatsChanged(state == Qt::Checked); });
+    connect(ui->spinBoxHPMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxAtkMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxDefMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpAMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpDMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpeMin, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxHPMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxAtkMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxDefMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpAMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpDMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
+    connect(ui->spinBoxSpeMax, &QSpinBox::valueChanged, this, [=] { emit ivsChanged(); });
     connect(ui->pushButtonIVCalculator, &QPushButton::clicked, this, &IVFilter::openIVCalculator);
 }
 
